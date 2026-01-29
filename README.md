@@ -15,27 +15,27 @@ The lab utilizes a **Hybrid Architecture** on an AWS EC2 instance:
 
 ```mermaid
 graph TD
-    User[Analyst / Attacker] -->|SSH / HTTP| AWS[AWS EC2 Instance]
+    User["Analyst / Attacker"] -->|SSH / HTTP| AWS["AWS EC2 Instance"]
     
-    subgraph Host[Native OS]
-        Splunk[Splunk Enterprise (SIEM)]
-        Docker[Docker Engine]
+    subgraph Host [Native OS]
+        Splunk["Splunk Enterprise (SIEM)"]
+        Docker["Docker Engine"]
     end
     
-    subgraph DockerNet[Docker Network: soc_net]
-        Kali[Kali Linux]
-        DVWA[Target: DVWA]
-        Juice[Target: Juice Shop]
-        Meta[Target: Metasploitable]
+    subgraph DockerNet [Docker Network: soc_net]
+        Kali["Kali Linux"]
+        DVWA["Target: DVWA"]
+        Juice["Target: Juice Shop"]
+        Meta["Target: Metasploitable"]
     end
     
     Kali -->|Attacks| DVWA
     Kali -->|Attacks| Juice
     Kali -->|Attacks| Meta
     
-    DVWA -.->|Logs (HEC)| Splunk
-    Juice -.->|Logs (HEC)| Splunk
-    Meta -.->|Logs (HEC)| Splunk
+    DVWA -.->|"Logs (HEC)"| Splunk
+    Juice -.->|"Logs (HEC)"| Splunk
+    Meta -.->|"Logs (HEC)"| Splunk
 ```
 
 ---
